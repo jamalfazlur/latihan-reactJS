@@ -1,0 +1,41 @@
+.dmt-navbar{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: white;
+}
+.dmt-navbar .navbar-nav>.active>a{
+        background: #3498db;
+        color: white;
+    }
+.dmt-navbar .dmt-cart{
+    padding-left: 10px;
+    border-left: 1px solid #969696;
+}
+.dmt-navbar .dmt-form-btn{
+    margin-right: 7px;
+}
+.dmt-navbar .dmt-btn-cart{
+    background: #3498db;
+    color: white;
+    border-radius: 3px;
+}
+.dmt-slider {
+    background: #e3e3e3;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: -20px;
+}
+.dmt-content{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.dmt-content .dmt-item-img {
+    margin-bottom: 20px;
+}
+.dmt-footer {
+    margin-top: 50px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    background: #202020;
+    color: white;
+}
