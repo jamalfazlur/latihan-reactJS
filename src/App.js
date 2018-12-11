@@ -11,6 +11,9 @@ import RegisterKu from './components/RegisterKu';
 import ProdukList from './components/ProdukList';
 import ManageProduk from './components/ManageProduk';
 import ProdukDetail from './components/ProdukDetail';
+import KeranjangKu from './components/KeranjangKu';
+import HistoryKu from './components/HistoryKu';
+import HistoryDetail from './components/HistoryDetail';
 
 const cookies = new Cookies();
 
@@ -53,6 +56,9 @@ class App extends Component {
             <Route path="/produk" component={ProdukList} />
             <Route path="/manageproduk" component={ManageProduk} />
             <Route path="/produkdetail/" component={ProdukDetail} />
+            <Route path="/keranjang" component={KeranjangKu} />
+            <Route path="/history" component={HistoryKu} />
+            <Route path="historydetail" component={HistoryDetail} />
           </div>
           
     

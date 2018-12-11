@@ -5,4 +5,6 @@ export const AUTH_LOADING = 'AUTH_LOADING';
 export const LOGOUT = 'LOGOUT';
 export const COOKIE_CHECKED = 'COOKIE_CHECKED';
 export const SELECT_PRODUK = 'SELECT_PRODUK';
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const SELECT_HISTORY = 'SELECT_HISTORY';
 // export const REGISTER_LOADING = 'REGISTER_LOADING';

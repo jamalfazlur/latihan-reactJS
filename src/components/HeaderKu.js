@@ -67,7 +67,7 @@
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav navbar>
                                 <NavItem >
-                                    <NavLink href="/produk">Products</NavLink>
+                                    <NavLink href="/produk"><i class="fas fa-align-justify"> </i> PRODUCTS</NavLink>
                                 </NavItem>
                             </Nav>
                             <Nav className="ml-auto" navbar>
@@ -76,6 +76,8 @@
                                         Hello, {this.props.username}
                                     </DropdownToggle>
                                     <DropdownMenu right>
+                                        <DropdownItem><Link to="/keranjang"><i class="fas fa-shopping-cart"></i> Keranjang</Link></DropdownItem>
+                                        <DropdownItem><Link to="/history">History Belanja</Link></DropdownItem>
                                         <DropdownItem> <Link to="/manageproduk">Manage Produk</Link></DropdownItem>
                                         <DropdownItem onClick={this.onLogoutClick}> Logout </DropdownItem>
                                     </DropdownMenu>

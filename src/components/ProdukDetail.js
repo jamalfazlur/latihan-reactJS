@@ -20,6 +20,34 @@ class ProdukDetail extends Component{
                 // console.log(err)
             })
     }
+    onAddToCart = () =>{
+        var username = this.props.username;
+        var produkId = this.props.produk.id;
+        var merk = this.props.produk.merk;
+        var kategori = this.props.produk.kategori;
+        var img = this.props.produk.img;
+        var jumlah = parseInt(this.refs.tbJumlah.value); 
+        var harga = this.props.produk.harga;
+
+        console.log(username,produkId,harga,jumlah,merk,kategori,img);
+
+        axios.post('http://localhost:1997/keranjang', {
+            idUser: username,
+            idProduk: produkId,
+            jumlah: jumlah,
+            harga: harga,
+            totHarga: (harga*jumlah),
+            merk: merk,
+            kategori: kategori,
+            img: img,
+            isFinished : false
+
+        }).then((res) =>{
+            alert(`${this.props.produk.merk} berhasil ditambah ke cart sejumlah: ${jumlah}`)
+        }).catch((err)=>{
+            alert(err);
+        })
+    }
     render(){
         var { merk, harga, desc, img } = this.props.produk;
         return(
@@ -36,7 +64,14 @@ class ProdukDetail extends Component{
                             <h3>Rp.{harga.toLocaleString()}</h3>
                         </div>
                         <div className="row">
-                            <p>{desc}</p>
+                            <p>Description: {desc}</p>
+                        </div>
+                        <hr />
+                        <div className="row">
+                            <input type="number" className="form-control col-sm-2" placeholder="Jumlah" ref="tbJumlah" />
+                        </div>
+                        <div className="row">
+                            <button className="btn btn-success" onClick={this.onAddToCart}><i class="fas fa-shopping-cart"></i> Add</button>
                         </div>
                     </div>
                 </div>
@@ -46,7 +81,8 @@ class ProdukDetail extends Component{
 }
 
 const mapStateToProps = (state) => {
-    return { produk: state.selectedProduk }
+    return {    produk: state.selectedProduk,
+                username: state.auth.username }
 }
 
 export default connect(mapStateToProps, { select_produk })(ProdukDetail);

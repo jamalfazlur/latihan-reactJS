@@ -6,7 +6,9 @@ import {
     AUTH_LOADING, 
     LOGOUT,
     COOKIE_CHECKED,
-    SELECT_PRODUK
+    SELECT_PRODUK,
+    SELECT_HISTORY,
+    ADD_TO_CART
 } from './types';
 
 export const cookieChecked = () => {
@@ -29,7 +31,7 @@ export const onUserRegister = ({ username, email, phone, password}) => {
                     axios.post('http://localhost:1997/users', { username, email, password, phone 
                     }).then((res) => {
                         console.log(res);
-                        dispatch({type: USER_LOGIN_SUCCESS, payload: res.data.username})
+                        dispatch({type: USER_LOGIN_SUCCESS, payload: {email, username}})
                     }).catch((err)=> {
                         console.log(err);
                         dispatch({type: AUTH_SYSTEM_ERROR, payload: 'System Error'})
@@ -102,5 +104,12 @@ export const select_produk = (selectedProduk) => {
     return {
         type: SELECT_PRODUK,
         payload: selectedProduk
+    }
+}
+
+export const select_history = (selectedHistory) => {
+    return {
+        type: SELECT_HISTORY,
+        payload: selectedHistory
     }
 }

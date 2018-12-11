@@ -43,45 +43,6 @@ class ProdukList extends Component {
         return listJSXProduk;
     }
 
-    
-    // ============================ Filter =========================================
-    // formSearch = () => {
-    //     var filterSomething = this.refs.searchProduk.value;
-    //     this.setState({filterForm: filterSomething})
-    // }
-    // filterProduk = () => {
-    //     var listProdukFilter = this.state.listProduk.filter((item) => {
-    //         return ( 
-    //             item.merk.toLowerCase().includes(this.state.filterForm.toLowerCase())
-    //         );
-    //     })
-    //     return listProdukFilter
-    // }
-
-    // renderFilterProduk = () => {   // INI PENGGANTI ---> renderListProduk()
-    //     var total = 12, size = 4, check = true;
-        
-    //     var resultFilter = this.filterProduk().map((item) =>{
-    //         // =========== ZEBRA EFFECT =============//
-    //         if(total === 0 && check === true){
-    //             size = 6;
-    //             total = 12;
-    //             check = false;
-    //         } else if(total === 0 && check === false) {
-    //             size = 4;
-    //             total = 12;
-    //             check = true;
-    //         }
-    //         total -= size;
-    //         // =========== ZEBRA EFFECT =============//
-
-    //         return (
-    //             <ProdukItems size={size} produk={item}/>
-    //         );
-    //     })
-    //     return resultFilter;
-    // }
-    // ============================ Filter =========================================
 
     render(){
         if(this.props.username !== ""){
@@ -97,16 +58,6 @@ class ProdukList extends Component {
                                 <div className="col-lg-12 text-center">
                                     <h2 className="section-heading text-uppercase">Product List</h2>
                                     <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-
-                                    { /* ======== FILTER JAMAL ======== */}
-                                    {/* <div class="col-sm-10 offset-sm-1 input-group input-group-lg searchproduk" style={{marginBottom: "30px"}}>
-                                        
-                                        <input type="text" class="form-control" ref="searchProduk" placeholder="Type a keyword.." onKeyUp={() => {this.formSearch()}} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
-                                        <div class="input-group-append">
-                                            <span className="input-group-text"><i class="fas fa-search"></i></span>
-                                        </div>
-                                    </div> */}
-                                    { /* ======== FILTER JAMAL (end) ======== */}
                                     
                                     <div class="col-sm-12 input-group input-group-lg searchproduk" style={{marginBottom: "30px"}}>
                                         
@@ -153,3 +104,54 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(ProdukList);
+
+
+
+{ /* ======== FILTER JAMAL ======== */}
+{/* <div class="col-sm-10 offset-sm-1 input-group input-group-lg searchproduk" style={{marginBottom: "30px"}}>
+    
+    <input type="text" class="form-control" ref="searchProduk" placeholder="Type a keyword.." onKeyUp={() => {this.formSearch()}} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
+    <div class="input-group-append">
+        <span className="input-group-text"><i class="fas fa-search"></i></span>
+    </div>
+</div> */}
+{ /* ======== FILTER JAMAL (end) ======== */}
+
+    // ============================ Filter =========================================
+    // formSearch = () => {
+    //     var filterSomething = this.refs.searchProduk.value;
+    //     this.setState({filterForm: filterSomething})
+    // }
+    // filterProduk = () => {
+    //     var listProdukFilter = this.state.listProduk.filter((item) => {
+    //         return ( 
+    //             item.merk.toLowerCase().includes(this.state.filterForm.toLowerCase())
+    //         );
+    //     })
+    //     return listProdukFilter
+    // }
+
+    // renderFilterProduk = () => {   // INI PENGGANTI ---> renderListProduk()
+    //     var total = 12, size = 4, check = true;
+        
+    //     var resultFilter = this.filterProduk().map((item) =>{
+    //         // =========== ZEBRA EFFECT =============//
+    //         if(total === 0 && check === true){
+    //             size = 6;
+    //             total = 12;
+    //             check = false;
+    //         } else if(total === 0 && check === false) {
+    //             size = 4;
+    //             total = 12;
+    //             check = true;
+    //         }
+    //         total -= size;
+    //         // =========== ZEBRA EFFECT =============//
+
+    //         return (
+    //             <ProdukItems size={size} produk={item}/>
+    //         );
+    //     })
+    //     return resultFilter;
+    // }
+    // ============================ Filter =========================================
