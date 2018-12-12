@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { select_history } from '../actions'
+import {KONEKSI} from '../support/config';
 
 class HistoryKu extends Component{
     state = { listProduk: [], selectedRow : 0}
@@ -12,7 +13,7 @@ class HistoryKu extends Component{
     }
 
     getProdukList = () => {
-        axios.get(`http://localhost:1997/history?idUser=${this.props.username}`)
+        axios.get(`${KONEKSI}/history?idUser=${this.props.username}`)
             .then((res) => {
                 console.log(res.data);
                 this.setState({ listProduk: res.data, selectedRow: 0 })

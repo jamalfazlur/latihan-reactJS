@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import {KONEKSI} from '../support/config';
 
 class HistoryDetail extends Component{
     state = { listProduk: [], selectedRow : 0}
@@ -11,7 +12,7 @@ class HistoryDetail extends Component{
     }
 
     getProdukList = () => {
-        axios.get(`http://localhost:1997/history?idUser=${this.props.username}&id=`)
+        axios.get(`${KONEKSI}/history?idUser=${this.props.username}&id=`)
             .then((res) => {
                 console.log(res.data);
                 this.setState({ listProduk: res.data, selectedRow: 0 })

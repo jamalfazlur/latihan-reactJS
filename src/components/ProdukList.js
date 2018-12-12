@@ -4,13 +4,14 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import ProdukItems from './ProdukItems';
+import {KONEKSI} from '../support/config';
 
 class ProdukList extends Component {
     
     state = { listProduk: [], searchListProduk: [] /*filterForm: ""*/ }
 
     componentDidMount(){
-        axios.get('http://localhost:1997/produk')
+        axios.get(`${KONEKSI}/produk`)
             .then((res) => {
                 // console.log(res.data);
                 this.setState({ listProduk: res.data, searchListProduk: res.data })
@@ -104,54 +105,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(ProdukList);
-
-
-
-{ /* ======== FILTER JAMAL ======== */}
-{/* <div class="col-sm-10 offset-sm-1 input-group input-group-lg searchproduk" style={{marginBottom: "30px"}}>
-    
-    <input type="text" class="form-control" ref="searchProduk" placeholder="Type a keyword.." onKeyUp={() => {this.formSearch()}} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
-    <div class="input-group-append">
-        <span className="input-group-text"><i class="fas fa-search"></i></span>
-    </div>
-</div> */}
-{ /* ======== FILTER JAMAL (end) ======== */}
-
-    // ============================ Filter =========================================
-    // formSearch = () => {
-    //     var filterSomething = this.refs.searchProduk.value;
-    //     this.setState({filterForm: filterSomething})
-    // }
-    // filterProduk = () => {
-    //     var listProdukFilter = this.state.listProduk.filter((item) => {
-    //         return ( 
-    //             item.merk.toLowerCase().includes(this.state.filterForm.toLowerCase())
-    //         );
-    //     })
-    //     return listProdukFilter
-    // }
-
-    // renderFilterProduk = () => {   // INI PENGGANTI ---> renderListProduk()
-    //     var total = 12, size = 4, check = true;
-        
-    //     var resultFilter = this.filterProduk().map((item) =>{
-    //         // =========== ZEBRA EFFECT =============//
-    //         if(total === 0 && check === true){
-    //             size = 6;
-    //             total = 12;
-    //             check = false;
-    //         } else if(total === 0 && check === false) {
-    //             size = 4;
-    //             total = 12;
-    //             check = true;
-    //         }
-    //         total -= size;
-    //         // =========== ZEBRA EFFECT =============//
-
-    //         return (
-    //             <ProdukItems size={size} produk={item}/>
-    //         );
-    //     })
-    //     return resultFilter;
-    // }
-    // ============================ Filter =========================================

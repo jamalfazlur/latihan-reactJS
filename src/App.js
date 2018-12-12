@@ -21,17 +21,6 @@ class App extends Component {
 
   state = {content: 'Ini sebelum diubah'};
 
-  // onBtnOkClick = () =>{
-  //   this.setState({content: 'Sudah Berubah'})
-  // }
-
-  // componentWillReceiveProps(newProps) {
-  //     console.log('WillReceiveProps() has been TRIGGERED ...')
-  //     if(newProps.username !== '') {
-  //         cookies.set('myPengguna', newProps.username, {path: '/'})
-  //     }
-  // }
-
   componentDidMount() {
       const username = cookies.get('myPengguna');
       if(username !== undefined){

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import axios from 'axios';
 import queryString from 'query-string';
-import { select_produk } from '../actions'
+import { select_produk } from '../actions';
+import {KONEKSI} from '../support/config';
 
 class ProdukDetail extends Component{
     componentDidMount(){
@@ -12,7 +13,7 @@ class ProdukDetail extends Component{
         console.log(params)
         var produkId = params.produkid;
     
-        axios.get(`http://localhost:1997/produk/${produkId}`)
+        axios.get(`${KONEKSI}/produk/${produkId}`)
             .then((res) => {
                 // console.log(res)
                 this.props.select_produk(res.data)
@@ -31,7 +32,7 @@ class ProdukDetail extends Component{
 
         console.log(username,produkId,harga,jumlah,merk,kategori,img);
 
-        axios.post('http://localhost:1997/keranjang', {
+        axios.post(`${KONEKSI}/keranjang`, {
             idUser: username,
             idProduk: produkId,
             jumlah: jumlah,

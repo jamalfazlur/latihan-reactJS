@@ -2,12 +2,13 @@ import React, { Component }  from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import CarouselKu from './CarouselKu';
+import {KONEKSI} from '../support/config';
 
 class HomeKu extends Component{
     state = { listProduk: [] }
 
     componentWillMount(){
-        axios.get('http://localhost:1997/produk')
+        axios.get(`${KONEKSI}/produk`)
             .then((res) => {
                 // console.log(res.data);
                 this.setState({ listProduk: res.data })

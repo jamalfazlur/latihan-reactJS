@@ -10,6 +10,7 @@ import {
     SELECT_HISTORY,
     ADD_TO_CART
 } from './types';
+import {KONEKSI} from '../support/config';
 
 export const cookieChecked = () => {
     return { type: COOKIE_CHECKED }
@@ -22,13 +23,13 @@ export const onUserRegister = ({ username, email, phone, password}) => {
         if(username === '' || email === '' || phone === '' || password === ''){
             dispatch({ type: AUTH_SYSTEM_ERROR, payload: 'Semua form di atas wajib diisi !'})
         } else {
-            axios.get('http://localhost:1997/users', {
+            axios.get(`${KONEKSI}/users`, {
                 params: {
                     username
                 }
             }).then((res) =>{
                 if(res.data.length === 0){
-                    axios.post('http://localhost:1997/users', { username, email, password, phone 
+                    axios.post(`${KONEKSI}/users`, { username, email, password, phone 
                     }).then((res) => {
                         console.log(res);
                         dispatch({type: USER_LOGIN_SUCCESS, payload: {email, username}})
@@ -53,7 +54,7 @@ export const onUserRegister = ({ username, email, phone, password}) => {
 
 export const keepLogin = (username) => {
     return (dispatch) => {
-        axios.get('http://localhost:1997/users', {
+        axios.get(`${KONEKSI}/users`, {
             param: {
                 username
             }
@@ -78,7 +79,7 @@ export const onUserLogin = ({ username, password }) => {
         
         dispatch({ type: AUTH_LOADING });
 
-        axios.get('http://localhost:1997/users', {
+        axios.get(`${KONEKSI}/users`, {
             params: {
                 username,
                 password

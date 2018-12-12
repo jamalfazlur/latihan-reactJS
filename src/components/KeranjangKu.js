@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import {KONEKSI} from '../support/config';
 
 class KeranjangKu extends Component{
     state = { listProduk: [], selectedRow : 0 }
     
     componentDidMount(){
-        this.getProdukList();    
-    }
-    componentDidUpdate(){
         this.getProdukList();    
     }
 
@@ -28,7 +26,7 @@ class KeranjangKu extends Component{
         var tbJumlah = parseInt(this.refs.jumlahEdit.value);
         console.log(tbJumlah,item.harga,(tbJumlah*item.harga));
 
-        axios.put('http://localhost:1997/keranjang/' + item.id, { 
+        axios.put(`${KONEKSI}/keranjang/${item.id}`, { 
             idUser: item.idUser, 
             idProduk: item.idProduk, 
             merk: item.merk, 
@@ -47,7 +45,7 @@ class KeranjangKu extends Component{
     }
 
     getProdukList = () => {
-        axios.get(`http://localhost:1997/keranjang?idUser=${this.props.username}&isFinished=false`)
+        axios.get(`${KONEKSI}/keranjang?idUser=${this.props.username}&isFinished=false`)
             .then((res) => {
                 console.log(res.data);
                 this.setState({ listProduk: res.data, selectedRow: 0 })
@@ -71,60 +69,29 @@ class KeranjangKu extends Component{
             if(item.id !== this.state.selectedRow){
                 return (
                     <tr>
-                        <td>
-                            {index+1}
-                        </td>
-                        <td>
-                            {item.merk}
-                        </td>
-                        <td>
-                            {<img src={item.img} width="100px" alt=""/> }
-                        </td>
-                        <td>
-                            Rp. {item.harga.toLocaleString()}
-                        </td>
-                        <td>
-                            {item.jumlah}
-                        </td>
-                        <td>
-                            Rp. {item.totHarga.toLocaleString()}
-                        </td>
-                        <td>
-                            <input type="button" className="btn btn-warning" value="Edit" onClick={() => this.setState({selectedRow: item.id})}   />
-                        </td>
-                        <td>
-                            <input type="button" className="btn btn-danger" value="Delete" onClick={() => this.onBtnDeleteClick(item.id)} />
-                        </td>
+                        <td>{index+1}</td>
+                        <td>{item.merk}</td>
+                        <td>{<img src={item.img} width="100px" alt=""/> }</td>
+                        <td>Rp. {item.harga.toLocaleString()}</td>
+                        <td>{item.jumlah}</td>
+                        <td> Rp. {item.totHarga.toLocaleString()}</td>
+                        <td><input type="button" className="btn btn-warning" value="Edit" onClick={() => this.setState({selectedRow: item.id})}   /></td>
+                        <td><input type="button" className="btn btn-danger" value="Delete" onClick={() => this.onBtnDeleteClick(item.id)} /></td>
                     </tr>
                 )
             }
             return (
                 <tr>
                     <td>{index+1}</td>
-                    <td>
-                        {item.merk} 
-                    </td>
-                    <td>
-                        {<img src={item.img} width="100px" alt=""/> }
-                    </td> 
-                    <td>
-                        {item.harga} 
-                    </td>
-                    <td>
-                        <input type="number" defaultValue={item.jumlah} ref="jumlahEdit"/>
-                    </td>
-                    <td>
-                        {item.totHarga}
-                    </td>
-                    <td>
-                        <input type="button" className="btn btn-primary" value="Save"  onClick={() => this.onBtnSaveClick(item)} />
-                    </td>
-                    <td>
-                        <input type="button" className="btn btn-default" value="Cancel" onClick={() => this.setState({selectedRow: 0})} />
-                    </td>
+                    <td>{item.merk} </td>
+                    <td>{<img src={item.img} width="100px" alt=""/> }</td> 
+                    <td>{item.harga} </td>
+                    <td><input type="number" defaultValue={item.jumlah} ref="jumlahEdit"/></td>
+                    <td>{item.totHarga}</td>
+                    <td><input type="button" className="btn btn-primary" value="Save"  onClick={() => this.onBtnSaveClick(item)} /></td>
+                    <td><input type="button" className="btn btn-default" value="Cancel" onClick={() => this.setState({selectedRow: 0})} /></td>
                 </tr>
             )
-            
         })
         return listJSXProduk;
     }
@@ -133,12 +100,12 @@ class KeranjangKu extends Component{
         var date = new Date();
 
         if(window.confirm('Anda yakin ingin checkout?')){
-            axios.get(`http://localhost:1997/keranjang?idUser=${this.props.username}&isFinished=false`)
+            axios.get(`${KONEKSI}/keranjang?idUser=${this.props.username}&isFinished=false`)
                 .then((res) => {
                 
                     for(var i =0; i < res.data.length; i++){
                         // console.log(res.data[i].id);
-                        axios.put('http://localhost:1997/keranjang/' + res.data[i].id, {
+                        axios.put(`${KONEKSI}/keranjang/${res.data[i].id}`, {
                             idUser: res.data[i].idUser, 
                             idProduk: res.data[i].idProduk,
                             merk: res.data[i].merk,
@@ -151,11 +118,13 @@ class KeranjangKu extends Component{
                         }) 
                     }
                 // console.log(res.data);
-                axios.post('http://localhost:1997/history', { 
+                axios.post(`${KONEKSI}/history`, { 
                     idUser: this.props.username,
-                    tgl: `${date.getDate()}-${date.getUTCMonth()}-${date.getFullYear()}`,
+                    tgl: `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`,
                     totalBelanja: this.getTotalBelanja(),
                     trx : res.data
+                }).then((result)=>{
+                    this.getProdukList();
                 })
                 
             }).catch((err) => {

@@ -4,7 +4,7 @@ import { Form, Button, FormGroup, Label, Input, Alert } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { onUserLogin } from '../actions';
-// import '../support/css/font-awesome.min.css';
+
 const cookies = new Cookies();
 
 class LoginKu extends Component {
@@ -20,8 +20,6 @@ class LoginKu extends Component {
         var username = this.refs.username.refs.tbUsername.value;
         var password = this.refs.password.refs.tbPassword.value;
         this.props.onUserLogin({username, password});
-        // console.log(password);
-        // this.setState({ username })
     }
 
     renderError = () => {

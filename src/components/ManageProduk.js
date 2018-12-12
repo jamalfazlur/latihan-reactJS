@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import {KONEKSI} from '../support/config';
 
 class ManageProduk extends Component{
     state = { listProduk: [], selectedRow : 0}
@@ -17,7 +18,7 @@ class ManageProduk extends Component{
         var harga = parseInt(this.refs.hargaAdd.value);
         var img = this.refs.imgAdd.value;
 
-        axios.post('http://localhost:1997/produk', {
+        axios.post(`${KONEKSI}/produk`, {
             merk, kategori, desc, harga, img
         }).then((res) => {
             this.getProdukList();
@@ -28,7 +29,7 @@ class ManageProduk extends Component{
 
     onBtnDeleteClick = (id) => {
         if(window.confirm('Are you sure?')){
-            axios.delete('http://localhost:1997/produk/' + id)
+            axios.delete(`${KONEKSI}/produk/${id}` )
             .then((res) => {
                 this.getProdukList();
             }).catch((err) => {
@@ -41,10 +42,10 @@ class ManageProduk extends Component{
         var merk = this.refs.merkEdit.value;
         var kategori = this.refs.kategoriEdit.value;
         var desc = this.refs.descEdit.value;
-        var harga = this.refs.hargaEdit.value;
+        var harga = parseInt(this.refs.hargaEdit.value);
         var img = this.refs.imgEdit.value;
 
-        axios.put('http://localhost:1997/produk/' + id, { 
+        axios.put(`${KONEKSI}/produk/${id}`, { 
             merk, kategori, desc, harga, img
         }).then((res) => {
             this.getProdukList();
@@ -55,7 +56,7 @@ class ManageProduk extends Component{
     }
 
     getProdukList = () => {
-        axios.get('http://localhost:1997/produk')
+        axios.get(`${KONEKSI}/produk`)
             .then((res) => {
                 // console.log(res.data);
                 this.setState({ listProduk: res.data, selectedRow: 0 })
