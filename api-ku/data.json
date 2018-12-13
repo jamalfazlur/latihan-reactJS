@@ -160,6 +160,18 @@
       "totHarga": 36000,
       "isFinished": true,
       "id": 6
+    },
+    {
+      "idUser": "jamal",
+      "idProduk": 1,
+      "merk": "tisu ajaib",
+      "kategori": "tisu",
+      "img": "https://cdn.monotaro.id/media/catalog/product/cache/6/image/400x400/b5fa40980320eb406ba395dece54e4a8/S000001628-3.jpg",
+      "jumlah": 2,
+      "harga": 30000,
+      "totHarga": 60000,
+      "isFinished": true,
+      "id": 7
     }
   ],
   "history": [
@@ -258,6 +270,33 @@
         }
       ],
       "id": 3
+    },
+    {
+      "idUser": "jamal",
+      "tgl": "13-12-2018",
+      "totalBelanja": 60000,
+      "trx": [
+        {
+          "idUser": "jamal",
+          "idProduk": 1,
+          "jumlah": 2,
+          "harga": 30000,
+          "totHarga": 60000,
+          "merk": "tisu ajaib",
+          "kategori": "tisu",
+          "img": "https://cdn.monotaro.id/media/catalog/product/cache/6/image/400x400/b5fa40980320eb406ba395dece54e4a8/S000001628-3.jpg",
+          "isFinished": false,
+          "id": 7
+        }
+      ],
+      "id": 4
+    },
+    {
+      "idUser": "jamal",
+      "tgl": "13-12-2018",
+      "totalBelanja": 0,
+      "trx": [],
+      "id": 5
     }
   ]
 }

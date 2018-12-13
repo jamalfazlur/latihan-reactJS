@@ -34,7 +34,7 @@ class LoginKu extends Component {
         }
         return <Button color="primary" 
                     onClick={this.onBtnLoginClick}>
-                    Login
+                    <i class="fas fa-sign-in-alt"></i> Login
                 </Button>
     }
 

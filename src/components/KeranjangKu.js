@@ -13,7 +13,7 @@ class KeranjangKu extends Component{
 
     onBtnDeleteClick = (id) => {
         if(window.confirm('Are you sure?')){
-            axios.delete('http://localhost:1997/keranjang/' + id)
+            axios.delete(`${KONEKSI}/keranjang/${id}`)
             .then((res) => {
                 this.getProdukList();
             }).catch((err) => {
@@ -75,8 +75,8 @@ class KeranjangKu extends Component{
                         <td>Rp. {item.harga.toLocaleString()}</td>
                         <td>{item.jumlah}</td>
                         <td> Rp. {item.totHarga.toLocaleString()}</td>
-                        <td><input type="button" className="btn btn-warning" value="Edit" onClick={() => this.setState({selectedRow: item.id})}   /></td>
-                        <td><input type="button" className="btn btn-danger" value="Delete" onClick={() => this.onBtnDeleteClick(item.id)} /></td>
+                        <td><button type="button" className="btn btn-warning" onClick={() => this.setState({selectedRow: item.id})}   ><i class="fas fa-edit"></i> Edit</button></td>
+                        <td><button type="button" className="btn btn-danger" onClick={() => this.onBtnDeleteClick(item.id)} ><i class="fas fa-trash-alt"></i> Delete</button></td>
                     </tr>
                 )
             }
@@ -165,7 +165,7 @@ class KeranjangKu extends Component{
 
                     <div className="alert alert-success text-center" role="alert" >
                         <h3 style={{marginBottom:"0"}}>Total Belanja: Rp. {this.getTotalBelanja().toLocaleString()}</h3><hr/>
-                        <button type="button" className="btn btn-success" onClick={() => {this.onCheckOutButton()}}>Checkout</button>
+                        <button type="button" className="btn btn-success" onClick={() => {this.onCheckOutButton()}}><i class="fas fa-sign-out-alt"></i> Checkout</button>
                     </div>
                     <div></div>
                 </div>

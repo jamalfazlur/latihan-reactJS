@@ -33,8 +33,8 @@ class HistoryKu extends Component{
                     <td>{item.idUser}</td>
                     <td>{item.tgl}</td>
                     <td>{item.trx.length}</td>
-                    <td>{item.totalBelanja}</td>
-                    <td> <input type="button" className="btn btn-warning" value="Details" onClick={() => this.setState({selectedRow: item.id})}   /></td>
+                    <td>Rp. {item.totalBelanja.toLocaleString()}</td>
+                    <td> <button type="button" className="btn btn-warning" onClick={() => this.setState({selectedRow: item.id})} ><i class="fas fa-external-link-alt"></i> Detail</button></td>
                 </tr>
             )
             

@@ -77,9 +77,9 @@
                                     </DropdownToggle>
                                     <DropdownMenu right>
                                         <DropdownItem><Link to="/keranjang"><i class="fas fa-shopping-cart"></i> Keranjang</Link></DropdownItem>
-                                        <DropdownItem><Link to="/history">History Belanja</Link></DropdownItem>
-                                        <DropdownItem> <Link to="/manageproduk">Manage Produk</Link></DropdownItem>
-                                        <DropdownItem onClick={this.onLogoutClick}> Logout </DropdownItem>
+                                        <DropdownItem><Link to="/history"><i class="fas fa-history"></i> History Belanja</Link></DropdownItem>
+                                        <DropdownItem> <Link to="/manageproduk"><i class="fas fa-cogs"></i> Manage Produk</Link></DropdownItem>
+                                        <DropdownItem onClick={this.onLogoutClick}><i class="fas fa-sign-out-alt"></i> Logout </DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
                             </Nav>

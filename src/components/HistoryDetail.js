@@ -35,7 +35,6 @@ class HistoryDetail extends Component{
                     <td>{<img src={item.img} width="100px" alt=""/> }</td>
                     <td>Rp. {item.harga.toLocaleString()}</td> 
                     <td>{item.jumlah}</td>
-                    <td></td>
                 </tr>
             )
             
@@ -57,7 +56,6 @@ class HistoryDetail extends Component{
                                 <th>Gambar</th>
                                 <th>Harga</th>
                                 <th>Jumlah</th>
-                                <th></th>
                             </tr>
                         </thead>
                         
