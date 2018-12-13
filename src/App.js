@@ -47,7 +47,7 @@ class App extends Component {
             <Route path="/produkdetail/" component={ProdukDetail} />
             <Route path="/keranjang" component={KeranjangKu} />
             <Route path="/history" component={HistoryKu} />
-            <Route path="historydetail" component={HistoryDetail} />
+            <Route path="/historydetail" component={HistoryDetail} />
           </div>
           
     

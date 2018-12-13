@@ -112,6 +112,54 @@
       "totHarga": 75000,
       "isFinished": true,
       "id": 2
+    },
+    {
+      "idUser": "jamal",
+      "idProduk": 4,
+      "merk": "pil kb",
+      "kategori": "obat",
+      "img": "https://www.klik-apotek.com/media/catalog/product/cache/1/small_image/440x/9df78eab33525d08d6e5fb8d27136e95/_/0/_0004_andalan_pilkb_tablet_1_1.jpg",
+      "jumlah": 2,
+      "harga": 15000,
+      "totHarga": 30000,
+      "isFinished": true,
+      "id": 3
+    },
+    {
+      "idUser": "jamal",
+      "idProduk": 1,
+      "merk": "tisu ajaib",
+      "kategori": "tisu",
+      "img": "https://cdn.monotaro.id/media/catalog/product/cache/6/image/400x400/b5fa40980320eb406ba395dece54e4a8/S000001628-3.jpg",
+      "jumlah": 1,
+      "harga": 30000,
+      "totHarga": 30000,
+      "isFinished": true,
+      "id": 4
+    },
+    {
+      "idUser": "rahman",
+      "idProduk": 8,
+      "merk": "test",
+      "kategori": "tisu",
+      "img": "https://dydza6t6xitx6.cloudfront.net/ci-jack-daniels-old-no-7-4ba9ca1354bfb42d.jpeg",
+      "jumlah": 1,
+      "harga": 950000,
+      "totHarga": 950000,
+      "isFinished": true,
+      "id": 5
+    },
+    {
+      "idUser": "rahman",
+      "idProduk": 7,
+      "merk": "tisu tisuan",
+      "kategori": "tisu",
+      "img": "https://my-best.id/wp-content/uploads/2018/04/CD-Pink-1.jpg-BuyWE-1-300x300.jpg",
+      "jumlah": 3,
+      "harga": 12000,
+      "totHarga": 36000,
+      "isFinished": true,
+      "id": 6
     }
   ],
   "history": [
@@ -139,13 +187,77 @@
           "kategori": "minyak",
           "img": "https://info-pasar.com/wp-content/uploads/2017/05/HERBORIST-MINYAK-ZAITUN-150ML.jpg",
           "jumlah": 3,
-          "harga": "25000",
+          "harga": 25000,
           "totHarga": 75000,
           "isFinished": false,
           "id": 2
         }
       ],
       "id": 1
+    },
+    {
+      "idUser": "jamal",
+      "tgl": "13-12-2018",
+      "totalBelanja": 60000,
+      "trx": [
+        {
+          "idUser": "jamal",
+          "idProduk": 4,
+          "jumlah": 2,
+          "harga": 15000,
+          "totHarga": 30000,
+          "merk": "pil kb",
+          "kategori": "obat",
+          "img": "https://www.klik-apotek.com/media/catalog/product/cache/1/small_image/440x/9df78eab33525d08d6e5fb8d27136e95/_/0/_0004_andalan_pilkb_tablet_1_1.jpg",
+          "isFinished": false,
+          "id": 3
+        },
+        {
+          "idUser": "jamal",
+          "idProduk": 1,
+          "jumlah": 1,
+          "harga": 30000,
+          "totHarga": 30000,
+          "merk": "tisu ajaib",
+          "kategori": "tisu",
+          "img": "https://cdn.monotaro.id/media/catalog/product/cache/6/image/400x400/b5fa40980320eb406ba395dece54e4a8/S000001628-3.jpg",
+          "isFinished": false,
+          "id": 4
+        }
+      ],
+      "id": 2
+    },
+    {
+      "idUser": "rahman",
+      "tgl": "13-12-2018",
+      "totalBelanja": 986000,
+      "trx": [
+        {
+          "idUser": "rahman",
+          "idProduk": 8,
+          "jumlah": 1,
+          "harga": 950000,
+          "totHarga": 950000,
+          "merk": "test",
+          "kategori": "tisu",
+          "img": "https://dydza6t6xitx6.cloudfront.net/ci-jack-daniels-old-no-7-4ba9ca1354bfb42d.jpeg",
+          "isFinished": false,
+          "id": 5
+        },
+        {
+          "idUser": "rahman",
+          "idProduk": 7,
+          "jumlah": 3,
+          "harga": 12000,
+          "totHarga": 36000,
+          "merk": "tisu tisuan",
+          "kategori": "tisu",
+          "img": "https://my-best.id/wp-content/uploads/2018/04/CD-Pink-1.jpg-BuyWE-1-300x300.jpg",
+          "isFinished": false,
+          "id": 6
+        }
+      ],
+      "id": 3
     }
   ]
 }

@@ -2,20 +2,24 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import queryString from 'query-string';
 import {KONEKSI} from '../support/config';
 
 class HistoryDetail extends Component{
-    state = { listProduk: [], selectedRow : 0}
+    state = { listProduk: [] }
     
     componentDidMount(){
-        this.getProdukList();    
+        this.getProdukList();
     }
 
     getProdukList = () => {
-        axios.get(`${KONEKSI}/history?idUser=${this.props.username}&id=`)
+        var params = queryString.parse(this.props.location.search)
+        console.log(params.trxId)
+
+        axios.get(`${KONEKSI}/history?idUser=${this.props.username}&id=${params.trxId}`)
             .then((res) => {
-                console.log(res.data);
-                this.setState({ listProduk: res.data, selectedRow: 0 })
+                console.log(res.data[0].trx);
+                this.setState({ listProduk: res.data[0].trx })
             }).catch((err) => {
                 console.log(err);
             })
@@ -23,56 +27,15 @@ class HistoryDetail extends Component{
 
     renderListProduk = () => {
         var listJSXProduk = this.state.listProduk.map((item) => {
-            if(item.id !== this.state.selectedRow){
-                return (
-                    <tr>
-                        <td>
-                            {item.id}
-                        </td>
-                        <td>
-                            {item.idUser}
-                        </td>
-                        <td>
-                            {item.tgl}
-                        </td>
-                        <td>
-                            {item.trx.length}
-                        </td>
-                        <td>
-                            {item.totalBelanja}
-                        </td>
-                        
-                        <td>
-                            <input type="button" className="btn btn-warning" value="Details" onClick={<Redirect to={`/historydetail?id=${item.id}`} />}   />
-                        </td>
-                        
-                    </tr>
-                )
-            }
+            
             return (
                 <tr>
                     <td>{item.id}</td>
-                    <td>
-                        <input type="text" defaultValue={item.merk} ref="merkEdit"/>
-                    </td>
-                    <td>
-                        <input type="text" defaultValue={item.kategori} ref="kategoriEdit"/>
-                    </td> 
-                    <td>
-                        <input type="text" defaultValue={item.harga} ref="hargaEdit"/>
-                    </td>
-                    <td>
-                        <input type="text" defaultValue={item.img} ref="imgEdit"/>
-                    </td>
-                    <td>
-                        <textarea defaultValue={item.desc} ref="descEdit" rows="1" ></textarea>
-                    </td>
-                    <td>
-                        <input type="button" className="btn btn-primary" value="Save"  onClick={() => this.onBtnSaveClick(item.id)} />
-                    </td>
-                    <td>
-                        <input type="button" className="btn btn-default" value="Cancel" onClick={() => this.setState({selectedRow: 0})} />
-                    </td>
+                    <td>{item.merk}</td>
+                    <td>{<img src={item.img} width="100px" alt=""/> }</td>
+                    <td>Rp. {item.harga.toLocaleString()}</td> 
+                    <td>{item.jumlah}</td>
+                    <td></td>
                 </tr>
             )
             
@@ -89,11 +52,11 @@ class HistoryDetail extends Component{
                     <table className="table">
                         <thead className="thead-dark">
                             <tr>
-                                <th>ID Trx</th>
-                                <th>Username</th>
-                                <th>Tanggal Transaksi</th>
-                                <th>Total Item</th>
-                                <th>Total Price</th>
+                                <th>ID Produk</th>
+                                <th>Merk</th>
+                                <th>Gambar</th>
+                                <th>Harga</th>
+                                <th>Jumlah</th>
                                 <th></th>
                             </tr>
                         </thead>

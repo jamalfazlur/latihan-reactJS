@@ -7,8 +7,7 @@ import {
     LOGOUT,
     COOKIE_CHECKED,
     SELECT_PRODUK,
-    SELECT_HISTORY,
-    ADD_TO_CART
+    SELECT_HISTORY
 } from './types';
 import {KONEKSI} from '../support/config';
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { select_history } from '../actions'
+import { select_history } from '../actions';
 import {KONEKSI} from '../support/config';
 
 class HistoryKu extends Component{
@@ -24,58 +24,20 @@ class HistoryKu extends Component{
 
     renderListProduk = () => {
         var listJSXProduk = this.state.listProduk.map((item) => {
-            if(item.id !== this.state.selectedRow){
-                return (
-                    <tr>
-                        <td>
-                            {item.id}
-                        </td>
-                        <td>
-                            {item.idUser}
-                        </td>
-                        <td>
-                            {item.tgl}
-                        </td>
-                        <td>
-                            {item.trx.length}
-                        </td>
-                        <td>
-                            {item.totalBelanja}
-                        </td>
-                        
-                        <td>
-                            <input type="button" className="btn btn-warning" value="Details" onClick={<Redirect to={`/historydetail?id=${item.id}`} />}   />
-                        </td>
-                        
-                    </tr>
-                )
+            if(this.state.selectedRow !== 0){
+                return <Redirect to={`/historydetail?trxId=${this.state.selectedRow}`} />    
             }
             return (
                 <tr>
                     <td>{item.id}</td>
-                    <td>
-                        <input type="text" defaultValue={item.merk} ref="merkEdit"/>
-                    </td>
-                    <td>
-                        <input type="text" defaultValue={item.kategori} ref="kategoriEdit"/>
-                    </td> 
-                    <td>
-                        <input type="text" defaultValue={item.harga} ref="hargaEdit"/>
-                    </td>
-                    <td>
-                        <input type="text" defaultValue={item.img} ref="imgEdit"/>
-                    </td>
-                    <td>
-                        <textarea defaultValue={item.desc} ref="descEdit" rows="1" ></textarea>
-                    </td>
-                    <td>
-                        <input type="button" className="btn btn-primary" value="Save"  onClick={() => this.onBtnSaveClick(item.id)} />
-                    </td>
-                    <td>
-                        <input type="button" className="btn btn-default" value="Cancel" onClick={() => this.setState({selectedRow: 0})} />
-                    </td>
+                    <td>{item.idUser}</td>
+                    <td>{item.tgl}</td>
+                    <td>{item.trx.length}</td>
+                    <td>{item.totalBelanja}</td>
+                    <td> <input type="button" className="btn btn-warning" value="Details" onClick={() => this.setState({selectedRow: item.id})}   /></td>
                 </tr>
             )
+            
             
         })
         return listJSXProduk;
@@ -113,7 +75,8 @@ class HistoryKu extends Component{
 
 const mapStateToProps = (state) => {
     return { 
-        username: state.auth.username
+        username: state.auth.username,
+        history: state.selectedHistory
     };
 }
 
